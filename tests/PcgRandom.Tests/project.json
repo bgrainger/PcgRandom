@@ -28,6 +28,7 @@
 		"dnxcore50": {
 			"dependencies": {
 				"System.Console": "4.0.0-*",
+				"System.Linq": "4.0.1-*",
 				"System.Reflection": "4.1.0-*",
 				"System.Runtime": "4.0.21-*"
 			}
