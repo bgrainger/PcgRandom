@@ -1,5 +1,3 @@
-using System;
-
 namespace PcgRandom
 {
 	/// <summary>
@@ -19,15 +17,15 @@ namespace PcgRandom
 
 		public uint Next()
 		{
-			// corresponds to pcg_setseq_64_xsh_rs_32_random_r
+			// corresponds to pcg_setseq_64_xsh_rr_32_random_r
 			var oldState = _state;
 			Step();
-			return Output(oldState);
+			return OutputXshRr(oldState);
 		}
 
 		public uint Next(uint bound)
 		{
-			// corresponds to pcg_setseq_64_xsh_rs_32_boundedrand_r
+			// corresponds to pcg_setseq_64_xsh_rr_32_boundedrand_r
 			uint threshold = (uint) (-bound % bound);
 			while (true)
 			{
@@ -68,15 +66,27 @@ namespace PcgRandom
 			_state = unchecked(_state * Multiplier + _inc);
 		}
 
-		private uint Output(ulong state)
+		private uint OutputXshRs(ulong state)
 		{
 			// correponds to pcg_output_xsh_rs_64_32
-			return unchecked((uint) ((state >> 22) ^ state) >> (int) ((state >> 61) + 22u));
+			return unchecked((uint) (((state >> 22) ^ state) >> (int) ((state >> 61) + 22u)));
+		}
+
+		private static uint OutputXshRr(ulong state)
+		{
+			// corresponds to pcg_output_xsh_rr_64_32
+			return Rotate((uint) (((state >> 18) ^ state) >> 27), (int) (state >> 59));
+		}
+
+		private static uint Rotate(uint value, int rotate)
+		{
+			// implements pcg_rotr_32
+			return (value >> rotate) | (value << (-rotate & 31));
 		}
 
 		const ulong Multiplier = 6364136223846793005ul;
 
+		readonly ulong _inc;
 		ulong _state;
-		ulong _inc;
 	}
 }

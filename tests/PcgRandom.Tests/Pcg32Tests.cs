@@ -8,7 +8,7 @@ namespace PcgRandom.Tests
 		[Test]
 		public void Test()
 		{
-			Pcg32 pcg32 = new Pcg32(42, 52);
+			Pcg32 pcg32 = new Pcg32(42, 54);
 
 			Assert.AreEqual(0xa15c02b7u, pcg32.Next());
 		}
