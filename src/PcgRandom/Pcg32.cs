@@ -6,85 +6,69 @@ namespace PcgRandom
 	/// </summary>
 	public sealed class Pcg32
 	{
-		public Pcg32(ulong seed, ulong sequence)
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Pcg32"/> pseudorandom number generator.
+		/// </summary>
+		/// <param name="state">The starting state for the RNG; you can pass any 64-bit value.</param>
+		/// <param name="sequence">The output sequence for the RNG; you can pass any 64-bit value, although only the low
+		/// 63 bits are significant.</param>
+		/// <remarks>For this generator, there are 2<sup>63</sup> possible sequences of pseudorandom numbers. Each sequence
+		/// is entirely distinct and has a period of 2<sup>64</sup>. The <paramref name="sequence"/> argument selects which
+		/// stream you will use. The <paramref name="state"/> argument specifies where you are in that 2<sup>64</sup> period.</remarks>
+		public Pcg32(ulong state, ulong sequence)
 		{
 			// corresponds to pcg_setseq_64_srandom_r
 			_inc = (sequence << 1) | 1u;
 			Step();
-			_state += seed;
+			_state += state;
 			Step();
 		}
 
-		public uint Next()
+		/// <summary>
+		/// Generates the next random number.
+		/// </summary>
+		/// <returns></returns>
+		public uint GenerateNext()
 		{
-			// corresponds to pcg_setseq_64_xsh_rr_32_random_r
+			// implements pcg_setseq_64_xsh_rr_32_random_r
 			var oldState = _state;
 			Step();
-			return OutputXshRr(oldState);
+			return Helpers.OutputXshRr(oldState);
 		}
 
-		public uint Next(uint bound)
+		/// <summary>
+		/// Generates a uniformly distributed 32-bit unsigned integer less than <paramref name="bound"/> (i.e., <c>x</c> where
+		/// <c>0 &lt;= x &lt; bound</c>.
+		/// </summary>
+		/// <param name="bound">The exclusive upper bound of the random number to be generated.</param>
+		/// <returns>A random number between <c>0</c> and <paramref name="bound"/> (exclusive).</returns>
+		public uint GenerateNext(uint bound)
 		{
-			// corresponds to pcg_setseq_64_xsh_rr_32_boundedrand_r
+			// implements pcg_setseq_64_xsh_rr_32_boundedrand_r
 			uint threshold = (uint) (-bound % bound);
 			while (true)
 			{
-				uint r = Next();
+				uint r = GenerateNext();
 				if (r >= threshold)
 					return r % bound;
 			}
 		}
 
+		/// <summary>
+		/// Advances the RNG by <paramref name="delta"/> steps, doing so in <c>log(delta)</c> time.
+		/// </summary>
+		/// <param name="delta">The number of steps to advance; pass <c>2<sup>64</sup> - delta</c> (i.e., <c>-delta</c>) to go backwards.</param>
 		public void Advance(ulong delta)
 		{
-			// corresponds to pcg_setseq_64_advance_r
-			_state = Advance(_state, delta, Multiplier, _inc);
+			// implements pcg_setseq_64_advance_r
+			_state = Helpers.Advance(_state, delta, Helpers.Multiplier64, _inc);
 		}
-
-		private ulong Advance(ulong state, ulong delta, ulong multiplier, ulong increment)
-		{
-			// corresponds to pcg_advance_lcg_64
-			ulong acc_mult = 1u;
-			ulong acc_plus = 0u;
-			while (delta > 0)
-			{
-				if (delta % 2 == 1)
-				{
-					acc_mult *= multiplier;
-					acc_plus = acc_plus * multiplier + increment;
-				}
-				increment = (multiplier + 1) * increment;
-				multiplier *= multiplier;
-				delta /= 2;
-			}
-			return acc_mult * state + acc_plus;
-		}
-
+		
 		private void Step()
 		{
 			// corresponds to pcg_setseq_64_step_r
-			_state = unchecked(_state * Multiplier + _inc);
+			_state = unchecked(_state * Helpers.Multiplier64 + _inc);
 		}
-
-		private uint OutputXshRs(ulong state)
-		{
-			// correponds to pcg_output_xsh_rs_64_32
-			return unchecked((uint) (((state >> 22) ^ state) >> (int) ((state >> 61) + 22u)));
-		}
-
-		private static uint OutputXshRr(ulong state)
-		{
-			// corresponds to pcg_output_xsh_rr_64_32
-			return Rotate((uint) (((state >> 18) ^ state) >> 27), (int) (state >> 59));
-		}
-
-		private static uint Rotate(uint value, int rotate)
-		{
-			// implements pcg_rotr_32
-			return (value >> rotate) | (value << (-rotate & 31));
-		}
-
-		const ulong Multiplier = 6364136223846793005ul;
 
 		readonly ulong _inc;
 		ulong _state;

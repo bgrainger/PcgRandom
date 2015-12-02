@@ -14,23 +14,23 @@ namespace PcgRandom.Tests
 			foreach (var round in Pcg32Rounds)
 			{
 				foreach (var expected in round.RandomNumbers)
-					Assert.AreEqual(expected, rng.Next());
+					Assert.AreEqual(expected, rng.GenerateNext());
 
 				rng.Advance((ulong) -round.RandomNumbers.Length);
 
 				foreach (var expected in round.RandomNumbers)
-					Assert.AreEqual(expected, rng.Next());
+					Assert.AreEqual(expected, rng.GenerateNext());
 
 				foreach (var coin in round.Coins)
-					Assert.AreEqual(coin, rng.Next(2));
+					Assert.AreEqual(coin, rng.GenerateNext(2));
 
 				foreach (var roll in round.Rolls)
-					Assert.AreEqual(roll, rng.Next(6) + 1);
+					Assert.AreEqual(roll, rng.GenerateNext(6) + 1);
 
 				var cards = Enumerable.Range(0, 52).ToArray();
 				for (var i = cards.Length; i > 1; i--)
 				{
-					var chosen = rng.Next((uint) i);
+					var chosen = rng.GenerateNext((uint) i);
 					var card = cards[chosen];
 					cards[chosen] = cards[i - 1];
 					cards[i - 1] = card;
