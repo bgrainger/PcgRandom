@@ -10,15 +10,26 @@
 	"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
 	"projectUrl": "https://github.com/bgrainger/PcgRandom",
 	"compilationOptions": {
+		"emitEntryPoint": true,
 		"warningsAsErrors": true
   	},
+	"dependencies": {
+		"PcgRandom": {
+			"target": "project"
+		},
+		"NUnitLite": "3.0.0-*"
+	},
+	"commands": {
+		"test": "PcgRandom.Tests"
+	},
 	"frameworks": {
 		"dnx46": {
 		},
 		"dnxcore50": {
 			"dependencies": {
-				"System.Runtime": "4.0.21-*",
-				"System.Runtime.Extensions": "4.0.11-*"
+				"System.Console": "4.0.0-*",
+				"System.Reflection": "4.1.0-*",
+				"System.Runtime": "4.0.21-*"
 			}
 		}
 	}
