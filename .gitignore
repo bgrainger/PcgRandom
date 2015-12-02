@@ -5,6 +5,7 @@ obj/
 packages/
 
 # ignore user-specific options/cache files
+project.lock.json
 _ReSharper.*
 Thumbs.db
 *.csproj.user
