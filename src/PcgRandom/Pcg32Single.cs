@@ -1,24 +1,18 @@
 namespace PcgRandom
 {
 	/// <summary>
-	/// Implements the <code>pcg32</code> random number generator described
+	/// Implements the <code>pcg32s</code> random number generator described
 	/// at <a href="http://www.pcg-random.org/using-pcg-c.html">http://www.pcg-random.org/using-pcg-c.html</a>.
 	/// </summary>
-	public sealed class Pcg32
+	public sealed class Pcg32Single
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Pcg32"/> pseudorandom number generator.
+		/// Initializes a new instance of the <see cref="Pcg32Single"/> pseudorandom number generator.
 		/// </summary>
 		/// <param name="state">The starting state for the RNG; you can pass any 64-bit value.</param>
-		/// <param name="sequence">The output sequence for the RNG; you can pass any 64-bit value, although only the low
-		/// 63 bits are significant.</param>
-		/// <remarks>For this generator, there are 2<sup>63</sup> possible sequences of pseudorandom numbers. Each sequence
-		/// is entirely distinct and has a period of 2<sup>64</sup>. The <paramref name="sequence"/> argument selects which
-		/// stream you will use. The <paramref name="state"/> argument specifies where you are in that 2<sup>64</sup> period.</remarks>
-		public Pcg32(ulong state, ulong sequence)
+		public Pcg32Single(ulong state)
 		{
-			// implements pcg_setseq_64_srandom_r
-			_inc = (sequence << 1) | 1u;
+			// implements pcg_oneseq_64_srandom_r
 			Step();
 			_state += state;
 			Step();
@@ -30,7 +24,7 @@ namespace PcgRandom
 		/// <returns></returns>
 		public uint GenerateNext()
 		{
-			// implements pcg_setseq_64_xsh_rr_32_random_r
+			// implements pcg_oneseq_64_xsh_rr_32_random_r
 			var oldState = _state;
 			Step();
 			return Helpers.OutputXshRr(oldState);
@@ -44,7 +38,7 @@ namespace PcgRandom
 		/// <returns>A random number between <c>0</c> and <paramref name="bound"/> (exclusive).</returns>
 		public uint GenerateNext(uint bound)
 		{
-			// implements pcg_setseq_64_xsh_rr_32_boundedrand_r
+			// implements pcg_oneseq_64_xsh_rr_32_boundedrand_r
 			uint threshold = (uint) (-bound % bound);
 			while (true)
 			{
@@ -60,17 +54,16 @@ namespace PcgRandom
 		/// <param name="delta">The number of steps to advance; pass <c>2<sup>64</sup> - delta</c> (i.e., <c>-delta</c>) to go backwards.</param>
 		public void Advance(ulong delta)
 		{
-			// implements pcg_setseq_64_advance_r
-			_state = Helpers.Advance(_state, delta, Helpers.Multiplier64, _inc);
-		}
-		
-		private void Step()
-		{
-			// corresponds to pcg_setseq_64_step_r
-			_state = unchecked(_state * Helpers.Multiplier64 + _inc);
+			// implements pcg_oneseq_64_advance_r
+			_state = Helpers.Advance(_state, delta, Helpers.Multiplier64, Helpers.Increment64);
 		}
 
-		readonly ulong _inc;
+		private void Step()
+		{
+			// implements pcg_oneseq_64_step_r
+			_state = unchecked(_state * Helpers.Multiplier64 + Helpers.Increment64);
+		}
+
 		ulong _state;
 	}
 }

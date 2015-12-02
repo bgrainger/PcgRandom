@@ -60,5 +60,11 @@ namespace PcgRandom
 		/// </summary>
 		/// <remarks>See <a href="https://github.com/imneme/pcg-c/blob/e2383c4bfcc862b40c3d85a43c9d495ff61186cb/include/pcg_variants.h#L253">original source</a>.</remarks>
 		public const ulong Multiplier64 = 6364136223846793005ul;
+
+		/// <summary>
+		/// Represents <c>PCG_DEFAULT_INCREMENT_64</c>.
+		/// </summary>
+		/// <remarks>See <a href="https://github.com/imneme/pcg-c/blob/e2383c4bfcc862b40c3d85a43c9d495ff61186cb/include/pcg_variants.h#L258">original source</a>.</remarks>
+		public const ulong Increment64 = 1442695040888963407ul;
 	}
 }
