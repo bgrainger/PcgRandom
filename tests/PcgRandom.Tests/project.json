@@ -10,14 +10,13 @@
 	"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
 	"projectUrl": "https://github.com/bgrainger/PcgRandom",
 	"compilationOptions": {
-		"emitEntryPoint": true,
 		"warningsAsErrors": true
   	},
 	"dependencies": {
 		"PcgRandom": {
 			"target": "project"
 		},
-		"NUnitLite": "3.0.0-*"
+		"xunit": "2.1.0"
 	},
 	"commands": {
 		"test": "xunit.runner.dnx"
@@ -27,9 +26,12 @@
 			"frameworkAssemblies": {
 				"System.Runtime": "4.0.0.0",
 				"System.Threading.Tasks": "4.0.0.0"
-			},
-			"dependencies": {
-				"xunit": "2.1.0",
+			}
+		},
+		"dnx451": {
+			"frameworkAssemblies": {
+				"System.Runtime": "4.0.0.0",
+				"System.Threading.Tasks": "4.0.0.0"
 			}
 		},
 		"dnxcore50": {
