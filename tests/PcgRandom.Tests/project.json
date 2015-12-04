@@ -23,7 +23,7 @@
 		"test": "PcgRandom.Tests"
 	},
 	"frameworks": {
-		"dnx46": {
+		"net40": {
 		},
 		"dnxcore50": {
 			"dependencies": {

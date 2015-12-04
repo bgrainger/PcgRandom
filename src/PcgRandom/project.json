@@ -13,9 +13,9 @@
 		"warningsAsErrors": true
   	},
 	"frameworks": {
-		"dnx46": {
+		"net40": {
 		},
-		"dnxcore50": {
+		"dotnet5.1": {
 			"dependencies": {
 				"System.Runtime": "4.0.21-*",
 				"System.Runtime.Extensions": "4.0.11-*"
