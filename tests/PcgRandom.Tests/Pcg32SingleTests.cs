@@ -1,12 +1,11 @@
 using System.Linq;
-using NUnit.Framework;
+using Xunit;
 
 namespace PcgRandom.Tests
 {
-	[TestFixture]
 	public class Pcg32SingleTests
 	{
-		[Test]
+		[Fact]
 		public void Test()
 		{
 			var rng = new Pcg32Single(42);
@@ -14,18 +13,18 @@ namespace PcgRandom.Tests
 			foreach (var round in Pcg32SingleRounds)
 			{
 				foreach (var expected in round.RandomNumbers)
-					Assert.AreEqual(expected, rng.GenerateNext());
+					Assert.Equal(expected, rng.GenerateNext());
 
 				rng.Advance((ulong) -round.RandomNumbers.Length);
 
 				foreach (var expected in round.RandomNumbers)
-					Assert.AreEqual(expected, rng.GenerateNext());
+					Assert.Equal(expected, rng.GenerateNext());
 
 				foreach (var coin in round.Coins)
-					Assert.AreEqual(coin, rng.GenerateNext(2));
+					Assert.Equal(coin, (int) rng.GenerateNext(2));
 
 				foreach (var roll in round.Rolls)
-					Assert.AreEqual(roll, rng.GenerateNext(6) + 1);
+					Assert.Equal(roll, (int) rng.GenerateNext(6) + 1);
 
 				var cards = Enumerable.Range(0, 52).ToArray();
 				for (var i = cards.Length; i > 1; i--)
@@ -37,7 +36,7 @@ namespace PcgRandom.Tests
 				}
 
 				string actual = string.Join(" ", cards.Select(x => $"{"A23456789TJQK"[x / 4]}{"hcds"[x % 4]}"));
-				Assert.AreEqual(round.Cards, actual);
+				Assert.Equal(round.Cards, actual);
 			}
 		}
 

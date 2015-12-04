@@ -1,128 +1,127 @@
 using System;
 using System.Linq;
-using NUnit.Framework;
+using Xunit;
 
 namespace PcgRandom.Tests
 {
-	[TestFixture]
 	public class PcgRandom32Tests
 	{
-		[SetUp]
-		public void SetUp()
+		public PcgRandom32Tests()
 		{
 			_rng = new PcgRandom32(42);
 		}
 
-		[Test]
+		[Fact]
 		public void Reseed()
 		{
-			Assert.AreEqual(TestValues[0] % int.MaxValue, _rng.Next());
+			Assert.Equal((int) (TestValues[0] % int.MaxValue), _rng.Next());
 
 			_rng = new PcgRandom32(42);
-			Assert.AreEqual(TestValues[0] % int.MaxValue, _rng.Next());
+			Assert.Equal((int) (TestValues[0] % int.MaxValue), _rng.Next());
 		}
 
-		[Test]
+		[Fact]
 		public void NextSequence()
 		{
-			var expected = TestValues.Select(x => x % int.MaxValue).ToArray();
+			var expected = TestValues.Select(x => (int) (x % int.MaxValue)).ToArray();
 			var actual = Enumerable.Range(0, TestValues.Length).Select(x => _rng.Next()).ToArray();
-			CollectionAssert.AreEqual(expected, actual);
+			Assert.Equal(expected, actual);
 		}
 
-		[Test]
+		[Fact]
 		public void NextBytes()
 		{
 			var expected = TestValues.Select(x => (byte) x).ToArray();
 
 			var buffer = new byte[6];
 			_rng.NextBytes(buffer);
-			CollectionAssert.AreEqual(expected, buffer);
+			Assert.Equal(expected, buffer);
 		}
 
-		[Test]
+		[Fact]
 		public void NextBytesNull()
 		{
 			Assert.Throws<ArgumentNullException>(() => _rng.NextBytes(null));
 		}
 
-		[Test]
+		[Fact]
 		public void NextMaxValueZero()
 		{
-			Assert.AreEqual(0, _rng.Next(0));
+			Assert.Equal(0, _rng.Next(0));
 		}
 
-		[Test]
+		[Fact]
 		public void NextMaxValueOne()
 		{
-			Assert.AreEqual(0, _rng.Next(1));
+			Assert.Equal(0, _rng.Next(1));
 		}
 
-		[TestCase(1)]
-		[TestCase(2)]
-		[TestCase(100)]
-		[TestCase(1000000)]
-		[TestCase(int.MaxValue)]
+		[Theory]
+		[InlineData(1)]
+		[InlineData(2)]
+		[InlineData(100)]
+		[InlineData(1000000)]
+		[InlineData(int.MaxValue)]
 		public void NextMaxInRange(int maxValue)
 		{
 			for (int i = 0; i < Repetitions; i++)
 			{
 				var r = _rng.Next(maxValue);
-				Assert.LessOrEqual(0, r);
-				Assert.Less(r, maxValue);
+				Assert.InRange(r, 0, maxValue - 1);
 			}
 		}
 
-		[TestCase(-100, 0)]
-		[TestCase(0, 1)]
-		[TestCase(0, 2)]
-		[TestCase(0, 100)]
-		[TestCase(0, 1000000)]
-		[TestCase(-1000000, 1000000)]
-		[TestCase(int.MinValue, 0)]
-		[TestCase(0, int.MaxValue)]
-		[TestCase(int.MinValue, int.MaxValue)]
+		[Theory]
+		[InlineData(-100, 0)]
+		[InlineData(0, 1)]
+		[InlineData(0, 2)]
+		[InlineData(0, 100)]
+		[InlineData(0, 1000000)]
+		[InlineData(-1000000, 1000000)]
+		[InlineData(int.MinValue, 0)]
+		[InlineData(0, int.MaxValue)]
+		[InlineData(int.MinValue, int.MaxValue)]
 		public void NextMinMaxInRange(int minValue, int maxValue)
 		{
 			for (int i = 0; i < Repetitions; i++)
 			{
 				var r = _rng.Next(minValue, maxValue);
-				Assert.LessOrEqual(minValue, r);
-				Assert.Less(r, maxValue);
+				Assert.InRange(r, minValue, maxValue - 1);
 			}
 		}
 
-		[TestCase(int.MinValue)]
-		[TestCase(-100)]
-		[TestCase(0)]
-		[TestCase(100)]
-		[TestCase(int.MaxValue - 1)]
+		[Theory]
+		[InlineData(int.MinValue)]
+		[InlineData(-100)]
+		[InlineData(0)]
+		[InlineData(100)]
+		[InlineData(int.MaxValue - 1)]
 		public void NextMinMaxEqual(int value)
 		{
-			Assert.AreEqual(value, _rng.Next(value, value));
-			Assert.AreEqual(value, _rng.Next(value, value + 1));
+			Assert.Equal(value, _rng.Next(value, value));
+			Assert.Equal(value, _rng.Next(value, value + 1));
 		}
 
-		[Test]
+		[Fact]
 		public void NextMaxMaxOutOfRange()
 		{
 			Assert.Throws<ArgumentOutOfRangeException>(() => _rng.Next(-1));
 		}
 
-		[Test]
+		[Fact]
 		public void NextMinMaxMaxOutOfRange()
 		{
 			Assert.Throws<ArgumentOutOfRangeException>(() => _rng.Next(0, -1));
 		}
 
-		[Test]
+		[Fact]
 		public void NextDoubleInRange()
 		{
 			for (int i = 0; i < Repetitions; i++)
 			{
 				var r = _rng.NextDouble();
-				Assert.LessOrEqual(0, r);
-				Assert.Less(r, 1.0);
+				Assert.InRange(r, 0, 1.0);
+				Assert.NotEqual(r, 1.0);
 			}
 		}
 

@@ -20,17 +20,25 @@
 		"NUnitLite": "3.0.0-*"
 	},
 	"commands": {
-		"test": "PcgRandom.Tests"
+		"test": "xunit.runner.dnx"
 	},
 	"frameworks": {
-		"net40": {
+		"net45": {
+			"frameworkAssemblies": {
+				"System.Runtime": "4.0.0"
+			},
+			"dependencies": {
+				"xunit": "2.1.0",
+			}
 		},
 		"dnxcore50": {
 			"dependencies": {
 				"System.Console": "4.0.0-*",
 				"System.Linq": "4.0.1-*",
 				"System.Reflection": "4.1.0-*",
-				"System.Runtime": "4.0.21-*"
+				"System.Runtime": "4.0.21-*",
+				"xunit": "2.1.0",
+				"xunit.runner.dnx": "2.1.0-*"
 			}
 		}
 	}
