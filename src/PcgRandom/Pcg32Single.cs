@@ -39,7 +39,7 @@ namespace PcgRandom
 		public uint GenerateNext(uint bound)
 		{
 			// implements pcg_oneseq_64_xsh_rr_32_boundedrand_r
-			uint threshold = (uint) (-bound % bound);
+			uint threshold = ((uint) -bound) % bound;
 			while (true)
 			{
 				uint r = GenerateNext();
