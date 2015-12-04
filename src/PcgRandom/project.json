@@ -1,14 +1,20 @@
 {
-	"version": "0.1-alpha-*",
+	"version": "0.2.0",
 	"authors": [
 		"Bradley Grainger"
 	],
 	"owners": [
 		"bgrainger"
 	],
+	"tags": [
+		"random",
+		"rng",
+		"pcg"
+	],
 	"copyright": "Copyright 2015 Bradley Grainger",
 	"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
 	"projectUrl": "https://github.com/bgrainger/PcgRandom",
+	"description": ".NET port of the PCG Random Number Generator library (www.pcg-random.org)",
 	"compilationOptions": {
 		"warningsAsErrors": true
   	},
