@@ -32,6 +32,9 @@
 			"frameworkAssemblies": {
 				"System.Runtime": "4.0.0.0",
 				"System.Threading.Tasks": "4.0.0.0"
+			},
+			"dependencies": {
+				"xunit.runner.dnx": "2.1.0-*"
 			}
 		},
 		"dnxcore50": {
@@ -40,7 +43,6 @@
 				"System.Linq": "4.0.1-*",
 				"System.Reflection": "4.1.0-*",
 				"System.Runtime": "4.0.21-*",
-				"xunit": "2.1.0",
 				"xunit.runner.dnx": "2.1.0-*"
 			}
 		}
