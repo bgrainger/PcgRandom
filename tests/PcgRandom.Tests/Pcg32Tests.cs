@@ -1,7 +1,7 @@
 using System.Linq;
 using Xunit;
 
-namespace PcgRandom.Tests
+namespace Pcg.Tests
 {
 	public class Pcg32Tests
 	{

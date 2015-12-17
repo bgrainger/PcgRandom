@@ -1,6 +1,6 @@
 using System;
 
-namespace PcgRandom
+namespace Pcg
 {
 	/// <summary>
 	/// Provides an implementation of <see cref="System.Random"/> that uses <see cref="Pcg32Single"/> to generate its random numbers.

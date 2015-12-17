@@ -1,4 +1,4 @@
-namespace PcgRandom
+namespace Pcg
 {
 	/// <summary>
 	/// Implements the <code>pcg32</code> random number generator described

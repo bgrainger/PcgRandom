@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace PcgRandom.Tests
+namespace Pcg.Tests
 {
 	public class PcgRandom32Tests
 	{

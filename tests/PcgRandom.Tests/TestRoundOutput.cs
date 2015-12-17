@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace PcgRandom.Tests
+namespace Pcg.Tests
 {
     public sealed class TestRoundOutput
     {

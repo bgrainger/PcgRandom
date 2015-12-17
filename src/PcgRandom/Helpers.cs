@@ -1,4 +1,4 @@
-namespace PcgRandom
+namespace Pcg
 {
 	internal static class Helpers
 	{
