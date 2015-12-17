@@ -5,21 +5,21 @@ namespace Pcg
 	/// <summary>
 	/// Provides an implementation of <see cref="System.Random"/> that uses <see cref="Pcg32Single"/> to generate its random numbers.
 	/// </summary>
-	public sealed class PcgRandom32 : Random
+	public sealed class PcgRandom : Random
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="PcgRandom32"/> class, using a time-dependent default seed value.
+		/// Initializes a new instance of the <see cref="PcgRandom"/> class, using a time-dependent default seed value.
 		/// </summary>
-		public PcgRandom32()
+		public PcgRandom()
 			: this(Environment.TickCount)
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="PcgRandom32"/> class, using the specified seed value.
+		/// Initializes a new instance of the <see cref="PcgRandom"/> class, using the specified seed value.
 		/// </summary>
 		/// <param name="seed">A number used to calculate a starting value for the pseudo-random number sequence.</param>
-		public PcgRandom32(int seed)
+		public PcgRandom(int seed)
 		{
 			_rng = new Pcg32Single(unchecked((uint) seed));
 		}

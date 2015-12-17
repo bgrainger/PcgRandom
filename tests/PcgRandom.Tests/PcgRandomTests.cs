@@ -4,11 +4,11 @@ using Xunit;
 
 namespace Pcg.Tests
 {
-	public class PcgRandom32Tests
+	public class PcgRandomTests
 	{
-		public PcgRandom32Tests()
+		public PcgRandomTests()
 		{
-			_rng = new PcgRandom32(42);
+			_rng = new PcgRandom(42);
 		}
 
 		[Fact]
@@ -16,7 +16,7 @@ namespace Pcg.Tests
 		{
 			Assert.Equal((int) (TestValues[0] % int.MaxValue), _rng.Next());
 
-			_rng = new PcgRandom32(42);
+			_rng = new PcgRandom(42);
 			Assert.Equal((int) (TestValues[0] % int.MaxValue), _rng.Next());
 		}
 
