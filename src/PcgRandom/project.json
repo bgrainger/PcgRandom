@@ -16,7 +16,7 @@
 	"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
 	"projectUrl": "https://github.com/bgrainger/PcgRandom",
 	"description": ".NET port of the PCG Random Number Generator library (www.pcg-random.org)",
-	"releaseNotes": "Fixed a bug that could cause a non-uniform distribution of random numbers.",
+	"releaseNotes": "Updated to latest dotnet CLI.",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/bgrainger/PcgRandom.git"

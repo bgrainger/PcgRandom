@@ -2,10 +2,18 @@ version: 1.0.{build}
 os: Visual Studio 2015
 configuration: Release
 init:
-- cmd: dnvm install 1.0.0-rc1-update1
+- cmd: >-
+    choco install dotnetcore -version 1.0.0.001598
+
+    set PATH=C:\Program Files\dotnet\bin;%PATH%
 before_build:
-- cmd: dnu restore
-build:
-  verbosity: minimal
+- cmd: dotnet restore
+build_script:
+- cmd: dotnet build src\PcgRandom
 test_script:
-- cmd: dnx -p tests\PcgRandom.Tests test
+- cmd: >-
+    cd tests\PcgRandom.Tests
+
+    dotnet restore
+
+    dotnet test
