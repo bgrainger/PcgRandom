@@ -1,5 +1,5 @@
 {
-	"version": "0.4.0",
+	"version": "0.9.0-rc1",
 	"authors": [
 		"Bradley Grainger"
 	],
@@ -12,7 +12,7 @@
 		"pcg"
 	],
 	"title": "PcgRandom",
-	"copyright": "Copyright 2015 Bradley Grainger",
+	"copyright": "Copyright 2015-2016 Bradley Grainger",
 	"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
 	"projectUrl": "https://github.com/bgrainger/PcgRandom",
 	"description": ".NET port of the PCG Random Number Generator library (www.pcg-random.org)",
@@ -23,11 +23,11 @@
 	},
 	"compilationOptions": {
 		"warningsAsErrors": true
-  	},
+	},
 	"frameworks": {
 		"net40": {
 		},
-		"dotnet5.1": {
+		"netstandard1.0": {
 			"dependencies": {
 				"System.Runtime": "4.0.21-*",
 				"System.Runtime.Extensions": "4.0.11-*"
