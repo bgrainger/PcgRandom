@@ -1,28 +1,26 @@
 {
-	"version": "0.9.0-rc1",
-	"authors": [
-		"Bradley Grainger"
-	],
-	"owners": [
-		"bgrainger"
-	],
-	"tags": [
-		"random",
-		"rng",
-		"pcg"
-	],
+	"version": "1.0.0-rc1",
 	"title": "PcgRandom",
-	"copyright": "Copyright 2015-2016 Bradley Grainger",
-	"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
-	"projectUrl": "https://github.com/bgrainger/PcgRandom",
 	"description": ".NET port of the PCG Random Number Generator library (www.pcg-random.org)",
-	"releaseNotes": "Updated to latest dotnet CLI.",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/bgrainger/PcgRandom.git"
-	},
-	"compilationOptions": {
+	"copyright": "Copyright 2015-2016 Bradley Grainger",
+	"authors": [ "Bradley Grainger" ],
+	"buildOptions": {
 		"warningsAsErrors": true
+	},
+	"packOptions": {
+		"owners": [ "bgrainger" ],
+		"tags": [
+			"random",
+			"rng",
+			"pcg"
+		],
+		"releaseNotes": "Update to .NET Core 1.0 RTM.",
+		"licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+		"projectUrl": "https://github.com/bgrainger/PcgRandom",
+		"repository": {
+			"type": "git",
+			"url": "https://github.com/bgrainger/PcgRandom.git"
+		}
 	},
 	"frameworks": {
 		"net40": {
