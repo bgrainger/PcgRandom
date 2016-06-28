@@ -1,19 +1,9 @@
 version: 1.0.{build}
-os: Visual Studio 2015
+image: Visual Studio 2015
 configuration: Release
-init:
-- cmd: >-
-    choco install dotnetcore -version 1.0.0.001598
-
-    set PATH=C:\Program Files\dotnet\bin;%PATH%
-before_build:
+install:
 - cmd: dotnet restore
 build_script:
-- cmd: dotnet build src\PcgRandom
+- cmd: dotnet build src\PcgRandom --configuration Release
 test_script:
-- cmd: >-
-    cd tests\PcgRandom.Tests
-
-    dotnet restore
-
-    dotnet test
+- cmd: dotnet test tests\PcgRandom.Tests --configuration Release
