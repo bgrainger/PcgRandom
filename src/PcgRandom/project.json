@@ -1,5 +1,5 @@
 {
-	"version": "1.0.0-rc1",
+	"version": "1.0.0",
 	"title": "PcgRandom",
 	"description": ".NET port of the PCG Random Number Generator library (www.pcg-random.org)",
 	"copyright": "Copyright 2015-2016 Bradley Grainger",
