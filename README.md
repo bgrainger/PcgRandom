@@ -13,7 +13,7 @@ Ubuntu 14.04 | Windows x64
 
 ## Documentation
 
-Read the [documentation](docs/index.md).
+Read the [documentation](docs/README.md).
 
 ## License
 
