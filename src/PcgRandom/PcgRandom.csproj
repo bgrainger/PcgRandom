@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Version>1.1.0</Version>
+    <Description>.NET port of the PCG Random Number Generator library (www.pcg-random.org)</Description>
+    <Copyright>Copyright 2015-2017 Bradley Grainger</Copyright>
+    <AssemblyTitle>PcgRandom</AssemblyTitle>
+    <Authors>Bradley Grainger</Authors>
+    <TargetFrameworks>net40;netstandard1.0</TargetFrameworks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PackageTags>random;rng;pcg</PackageTags>
+    <PackageReleaseNotes>Rebuild with .NET Core 2.0 tooling.</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/bgrainger/PcgRandom</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/bgrainger/PcgRandom.git</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
+  </ItemGroup>
+
+</Project>
