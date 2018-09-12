@@ -121,7 +121,7 @@ namespace Pcg.Tests
 			{
 				var r = _rng.NextDouble();
 				Assert.InRange(r, 0, 1.0);
-				Assert.NotEqual(r, 1.0);
+				Assert.NotEqual(1.0, r);
 			}
 		}
 
