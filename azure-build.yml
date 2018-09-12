@@ -1,8 +1,4 @@
 steps:
-- task: DotNetCoreInstaller@0
-  inputs:
-    version: '2.1.402'
-
 - script: dotnet restore
 
 - script: dotnet build --configuration Release
