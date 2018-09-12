@@ -1,0 +1,20 @@
+pool:
+  vmImage: 'vs2017-win2016'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- task: DotNetCoreInstaller@0
+  inputs:
+    version: '2.1.402'
+
+- script: dotnet restore
+
+- script: dotnet build --configuration $(buildConfiguration)
+
+- script: dotnet test tests/PcgRandom.Tests/PcgRandom.Tests.csproj --configuration $(buildConfiguration) --logger trx
+- task: PublishTestResults@2
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
