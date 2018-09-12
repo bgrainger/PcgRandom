@@ -1,0 +1,14 @@
+steps:
+- task: DotNetCoreInstaller@0
+  inputs:
+    version: '2.1.402'
+
+- script: dotnet restore
+
+- script: dotnet build --configuration Release
+
+- script: dotnet test tests/PcgRandom.Tests/PcgRandom.Tests.csproj --configuration Release --logger trx
+- task: PublishTestResults@2
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'

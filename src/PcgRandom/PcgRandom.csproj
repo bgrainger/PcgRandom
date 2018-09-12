@@ -6,7 +6,7 @@
     <Copyright>Copyright 2015-2017 Bradley Grainger</Copyright>
     <AssemblyTitle>PcgRandom</AssemblyTitle>
     <Authors>Bradley Grainger</Authors>
-    <TargetFrameworks>net40;netstandard1.0</TargetFrameworks>
+    <TargetFrameworks>netstandard1.0;netstandard2.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageTags>random;rng;pcg</PackageTags>
     <PackageReleaseNotes>Rebuild with .NET Core 2.0 tooling.</PackageReleaseNotes>
