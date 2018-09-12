@@ -5,9 +5,11 @@ random number generators.
 
 ## Build Status
 
-Ubuntu 14.04 | Windows x64
---- | ---
-[![Travis CI](https://img.shields.io/travis/bgrainger/PcgRandom.svg)](https://travis-ci.org/bgrainger/PcgRandom) | [![AppVeyor](https://img.shields.io/appveyor/ci/BradleyGrainger/pcgrandom.svg)](https://ci.appveyor.com/project/BradleyGrainger/pcgrandom)
+CI | Platforms | Status
+--- | --- | ---
+Travis CI | Ubuntu 14.04 | [![Travis CI](https://img.shields.io/travis/bgrainger/PcgRandom.svg)](https://travis-ci.org/bgrainger/PcgRandom)
+Appveyor | Windows | [![AppVeyor](https://img.shields.io/appveyor/ci/BradleyGrainger/pcgrandom.svg)](https://ci.appveyor.com/project/BradleyGrainger/pcgrandom)
+Azure Pipelines | Ubuntu 16.04, macOS 10.13, Windows 2016 | [![Build Status](https://dev.azure.com/bgrainger/bgrainger/_apis/build/status/bgrainger.PcgRandom)](https://dev.azure.com/bgrainger/bgrainger/_build/latest?definitionId=1)
 
 [![NuGet](https://img.shields.io/nuget/v/PcgRandom.svg)](https://www.nuget.org/packages/PcgRandom)
 
