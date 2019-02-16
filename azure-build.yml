@@ -1,10 +1,18 @@
 steps:
-- script: dotnet restore
-
-- script: dotnet build --configuration Release
-
-- script: dotnet test tests/PcgRandom.Tests/PcgRandom.Tests.csproj --configuration Release --logger trx
-- task: PublishTestResults@2
+- task: DotNetCoreCLI@2
+  displayName: 'Restore packages'
   inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
+    command: 'restore'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    configuration: 'Release'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run tests'
+  inputs:
+    command: 'test'
+    configuration: 'Release'
+    publishTestResults: true
