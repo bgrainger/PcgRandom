@@ -13,6 +13,7 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/bgrainger/PcgRandom.git</RepositoryUrl>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DebugType>embedded</DebugType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
