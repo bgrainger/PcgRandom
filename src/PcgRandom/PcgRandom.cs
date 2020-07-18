@@ -19,19 +19,13 @@ namespace Pcg
 		/// Initializes a new instance of the <see cref="PcgRandom"/> class, using the specified seed value.
 		/// </summary>
 		/// <param name="seed">A number used to calculate a starting value for the pseudo-random number sequence.</param>
-		public PcgRandom(int seed)
-		{
-			_rng = new Pcg32Single(unchecked((uint) seed));
-		}
+		public PcgRandom(int seed) => _rng = new Pcg32Single(unchecked((uint) seed));
 
 		/// <summary>
 		/// Returns a non-negative random integer.
 		/// </summary>
 		/// <returns>A 32-bit signed integer that is greater than or equal to 0 and less than <see cref="int.MaxValue"/>.</returns>
-		public override int Next()
-		{
-			return (int) _rng.GenerateNext(int.MaxValue);
-		}
+		public override int Next() => (int) _rng.GenerateNext(int.MaxValue);
 
 		/// <summary>
 		/// Returns a non-negative random integer that is less than the specified maximum.

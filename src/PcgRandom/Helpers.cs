@@ -29,19 +29,15 @@ namespace Pcg
 		/// Implements <c>pcg_output_xsh_rs_64_32</c>.
 		/// </summary>
 		/// <remarks>See <a href="https://github.com/imneme/pcg-c/blob/e2383c4bfcc862b40c3d85a43c9d495ff61186cb/include/pcg_variants.h#L133">original source</a>.</remarks>
-		public static uint OutputXshRs(ulong state)
-		{
-			return unchecked((uint) (((state >> 22) ^ state) >> (int) ((state >> 61) + 22u)));
-		}
+		public static uint OutputXshRs(ulong state) =>
+			unchecked((uint) (((state >> 22) ^ state) >> (int) ((state >> 61) + 22u)));
 
 		/// <summary>
 		/// Implements <c>pcg_output_xsh_rr_64_32</c>.
 		/// </summary>
 		/// <remarks>See <a href="https://github.com/imneme/pcg-c/blob/e2383c4bfcc862b40c3d85a43c9d495ff61186cb/include/pcg_variants.h#L158">original source</a>.</remarks>
-		public static uint OutputXshRr(ulong state)
-		{
-			return RotateRight((uint) (((state >> 18) ^ state) >> 27), (int) (state >> 59));
-		}
+		public static uint OutputXshRr(ulong state) =>
+			RotateRight((uint) (((state >> 18) ^ state) >> 27), (int) (state >> 59));
 
 		/// <summary>
 		/// Implements <c>pcg_rotr_32</c>.
@@ -50,10 +46,8 @@ namespace Pcg
 		/// <param name="rotate">The number of bits to rotate.</param>
 		/// <returns>The input <paramref name="value"/>, rotated right by <paramref name="rotate"/> bits.</returns>
 		/// <remarks>See <a href="https://github.com/imneme/pcg-c/blob/e2383c4bfcc862b40c3d85a43c9d495ff61186cb/include/pcg_variants.h#L88">original source</a>.</remarks>
-		public static uint RotateRight(uint value, int rotate)
-		{
-			return (value >> rotate) | (value << (-rotate & 31));
-		}
+		public static uint RotateRight(uint value, int rotate) =>
+			(value >> rotate) | (value << (-rotate & 31));
 
 		/// <summary>
 		/// Represents <c>PCG_DEFAULT_MULTIPLIER_64</c>.
