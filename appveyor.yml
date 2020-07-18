@@ -4,6 +4,10 @@ configuration: Release
 install:
 - cmd: dotnet restore
 build_script:
-- cmd: dotnet build src\PcgRandom --configuration Release
+- cmd: dotnet build src\PcgRandom --configuration Release --no-restore
 test_script:
-- cmd: dotnet test tests\PcgRandom.Tests --configuration Release
+- cmd: dotnet test tests\PcgRandom.Tests --configuration Release --no-restore
+after_test:
+- cmd: dotnet pack --no-build --no-restore src\PcgRandom\PcgRandom.csproj
+artifacts:
+- path: src\*\bin\Release\*.nupkg
