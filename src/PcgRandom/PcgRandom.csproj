@@ -11,7 +11,7 @@
     <PackageTags>random;rng;pcg</PackageTags>
     <PackageReleaseNotes>Rebuild with .NET Core 2.0 tooling.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bgrainger/PcgRandom</PackageProjectUrl>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/bgrainger/PcgRandom.git</RepositoryUrl>
   </PropertyGroup>
