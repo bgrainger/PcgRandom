@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace Pcg
 {
@@ -10,10 +11,7 @@ namespace Pcg
 		/// <summary>
 		/// Initializes a new instance of the <see cref="PcgRandom"/> class, using a time-dependent default seed value.
 		/// </summary>
-		public PcgRandom()
-			: this(Environment.TickCount)
-		{
-		}
+		public PcgRandom() => _rng = new Pcg32Single(unchecked((ulong) Stopwatch.GetTimestamp()));
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="PcgRandom"/> class, using the specified seed value.
