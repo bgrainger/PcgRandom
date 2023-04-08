@@ -114,6 +114,49 @@ namespace Pcg.Tests
 			Assert.Throws<ArgumentOutOfRangeException>(() => _rng.Next(0, -1));
 		}
 
+		[Theory]
+		[InlineData(-100L, 0L)]
+		[InlineData(0L, 1L)]
+		[InlineData(0L, 2L)]
+		[InlineData(0L, 100L)]
+		[InlineData(0L, 1000000L)]
+		[InlineData(-1000000L, 1000000L)]
+		[InlineData(long.MinValue, 0L)]
+		[InlineData(0L, long.MaxValue)]
+		[InlineData(long.MinValue, long.MaxValue)]
+		[InlineData(long.MinValue, long.MinValue + 1)]
+		[InlineData(long.MinValue, long.MinValue + 2)]
+		[InlineData(long.MaxValue - 2, long.MaxValue)]
+		[InlineData(long.MaxValue - 1, long.MaxValue)]
+		public void NextInt64MinMaxInRange(long minValue, long maxValue)
+		{
+			for (int i = 0; i < Repetitions; i++)
+			{
+				var r = _rng.NextInt64(minValue, maxValue);
+				Assert.InRange(r, minValue, maxValue - 1);
+			}
+		}
+
+		[Theory]
+		[InlineData(long.MinValue)]
+		[InlineData(int.MinValue)]
+		[InlineData(-100L)]
+		[InlineData(0L)]
+		[InlineData(100L)]
+		[InlineData(int.MaxValue)]
+		[InlineData(long.MaxValue - 1)]
+		public void NextInt64MinMaxEqual(long value)
+		{
+			Assert.Equal(value, _rng.NextInt64(value, value));
+			Assert.Equal(value, _rng.NextInt64(value, value + 1));
+		}
+
+		[Fact]
+		public void NextInt64MinMaxMaxOutOfRange()
+		{
+			Assert.Throws<ArgumentOutOfRangeException>(() => _rng.NextInt64(0, -1));
+		}
+
 		[Fact]
 		public void NextDoubleInRange()
 		{

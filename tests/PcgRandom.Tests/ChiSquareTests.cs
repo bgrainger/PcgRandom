@@ -17,6 +17,18 @@ namespace Pcg.Tests
 			AssertChiSquare(c_sampleCount, counts);
 		}
 
+		[Fact]
+		public void TestNextInt64()
+		{
+			// generate random numbers and count how many fall into each bin
+			var random = new PcgRandom();
+			var counts = new int[c_binCount];
+			for (int i = 0; i < c_sampleCount; i++)
+				counts[random.NextInt64(counts.Length)]++;
+
+			AssertChiSquare(c_sampleCount, counts);
+		}
+
 		private void AssertChiSquare(int sampleCount, int[] counts)
 		{
 			// calculate chi squared value for the distribution
