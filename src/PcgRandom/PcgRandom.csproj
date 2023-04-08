@@ -13,6 +13,7 @@
     <PackageReleaseNotes>Rebuild with .NET Core 2.0 tooling.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bgrainger/PcgRandom</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/bgrainger/PcgRandom.git</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -34,6 +35,10 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <Using Remove="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
