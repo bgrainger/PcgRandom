@@ -7,9 +7,9 @@ random number generators.
 
 CI | Platforms | Status
 --- | --- | ---
-Travis CI | Ubuntu 14.04 | [![Travis CI](https://img.shields.io/travis/bgrainger/PcgRandom.svg)](https://travis-ci.org/bgrainger/PcgRandom)
+GitHub Actions | Ubuntu 22.04, Windows 2022 | [![Build](https://github.com/bgrainger/PcgRandom/actions/workflows/build.yml/badge.svg)](https://github.com/bgrainger/PcgRandom/actions/workflows/build.yml)
 Appveyor | Windows | [![AppVeyor](https://img.shields.io/appveyor/ci/BradleyGrainger/pcgrandom.svg)](https://ci.appveyor.com/project/BradleyGrainger/pcgrandom)
-Azure Pipelines | Ubuntu 16.04, macOS 10.13, Windows 2016 | [![Build Status](https://dev.azure.com/bgrainger/Public/_apis/build/status/PcgRandom)](https://dev.azure.com/bgrainger/Public/_build/latest?definitionId=1)
+Azure Pipelines | Ubuntu 22.04, macOS 12, Windows 2022 | [![Build Status](https://dev.azure.com/bgrainger/Public/_apis/build/status/PcgRandom)](https://dev.azure.com/bgrainger/Public/_build/latest?definitionId=1)
 
 [![NuGet](https://img.shields.io/nuget/v/PcgRandom.svg)](https://www.nuget.org/packages/PcgRandom)
 
