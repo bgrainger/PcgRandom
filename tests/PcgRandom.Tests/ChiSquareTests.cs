@@ -1,7 +1,4 @@
-﻿using System;
-using Xunit;
-
-namespace Pcg.Tests
+﻿namespace Pcg.Tests
 {
 	public class ChiSquareTests
 	{

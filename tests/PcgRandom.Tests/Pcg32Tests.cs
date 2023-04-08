@@ -1,6 +1,3 @@
-using System.Linq;
-using Xunit;
-
 namespace Pcg.Tests
 {
 	public class Pcg32Tests

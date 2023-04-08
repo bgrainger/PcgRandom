@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Pcg.Tests
+﻿namespace Pcg.Tests
 {
     public sealed class TestRoundOutput
     {
