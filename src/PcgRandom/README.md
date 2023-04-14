@@ -1,8 +1,6 @@
 ## About
 
-`PcgRandom` provides an implementation of `Random` that generates pseudorandom numbers using the [PCG](http://www.pcg-random.org/) family of random number generators.
-It is a .NET port (written entirely in C#) of the [C library](https://www.pcg-random.org/using-pcg-c.html) by Melissa O'Neill.
-You can use a `PcgRandom` instance anywhere you would use a `Random` instance.
+`PcgRandom` provides an implementation of `Random` that generates pseudorandom numbers using the [PCG](http://www.pcg-random.org/) family of random number generators. It is a .NET port (written entirely in C#) of the [C library](https://www.pcg-random.org/using-pcg-c.html) by Melissa O'Neill. You can use a `PcgRandom` instance anywhere you would use a `Random` instance.
 
 ## Basic Usage
 
