@@ -10,7 +10,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageTags>random;rng;pcg</PackageTags>
-    <PackageReleaseNotes>Rebuild with .NET Core 2.0 tooling.</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/bgrainger/PcgRandom/releases</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bgrainger/PcgRandom</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
